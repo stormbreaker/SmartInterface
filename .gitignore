@@ -1,4 +1,4 @@
 *.conf
 *.log
 *.dabs
-__pycache__/
+*/__pycache__/
