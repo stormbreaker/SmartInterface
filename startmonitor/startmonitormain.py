@@ -13,6 +13,7 @@ PHONE = ''
 def LoadLoginInformation():
     global SERVERACCOUNT
     global ACCOUNTPASS
+    global PHONE
     monitorConfigurationFilePath = os.path.normpath('config/monitor.conf')
     loginInformationFile = open(monitorConfigurationFilePath)
     fileContents = loginInformationFile.read();

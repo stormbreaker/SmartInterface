@@ -8,7 +8,7 @@ class SmartServer:
         self._functionDict = self._GetFunctions()
         self._preparedCommand = None
         self._starttime = datetime.datetime.now()
-        
+
     def _GetFunctions(self):
         d = {}
         d['demoji'] = self.Demoji
@@ -45,6 +45,7 @@ class SmartServer:
 
     def Status(self, detail):
         params = detail.split()
+        information = ''
 
         print (params)
 
