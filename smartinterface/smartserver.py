@@ -8,6 +8,7 @@ class SmartServer:
         self._functionDict = self._GetFunctions()
         self._preparedCommand = None
         self._starttime = datetime.datetime.now()
+        
     def _GetFunctions(self):
         d = {}
         d['demoji'] = self.Demoji
@@ -23,6 +24,8 @@ class SmartServer:
         commandParameters = " ".join(commandList[1:])
 
         self._preparedCommand = [command, commandParameters]
+
+        return
 
     def ProcessCommand(self):
         if self._preparedCommand[0] not in self._functionDict:
