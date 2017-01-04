@@ -30,7 +30,7 @@ class MojiCoder:
         emojifile.close()
         print (self._mojiDict)
 
-    def Demoji(self, content):
+    def Demoji(self, content): # content is the string containing emojis
         workingString = content #self._ConvertFromQuotedPrintable(content)
         # print("Content in coder", type(content))
         returnList = []
@@ -41,6 +41,19 @@ class MojiCoder:
                 self._AddEmoji(part)
             returnList.append(self._mojiDict[codePoint].strip("\n"))
         return "".join(returnList).strip()
+
+    # returns single emoji based on passing the value in.  You will have to build text around
+    # this returned emoji data *fingers crossed*
+    def Enoji(self, content): # content is the new emoji that we wish to get
+        workingString = content
+        returnList = []
+        '''
+        take content, find it in the values of the dictionary and then
+        get the key.  turn the key from a number into a string and put in returnList
+        '''
+
+        return "".join(returnList).strip()
+        pass
 
 
 

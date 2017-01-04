@@ -104,11 +104,31 @@ def main():
                                 interfacePath = os.path.normpath('../smartinterface')
                                 os.chdir(interfacePath)
                                 print(os.getcwd())
-                                process = subprocess.Popen('python smartinterface.py')
+                                try:
+                                    process = subprocess.check_call('python smartinterface.py')  #Popen('python smartinterface.py')
+                                except Exception as ex:
+                                    try:
+                                        print(ex)
+                                        connection = smtplib.SMTP("smtp.gmail.com")
+                                        connection.starttls()
+                                        connection.login(SERVERACCOUNT, ACCOUNTPASS)
+                                    except:
+                                        print (traceback.format_exc())
+                                        print ("Failed to connect to send")
+                                    try:
+                                        connection.sendmail("server@server.com", PHONE, "Server failed to start")
+                                    except:
+                                        print(traceback.format_exc())
+                                        print("Failed to send mail")
+                                    try:
+                                        connection.quit()
+                                    except:
+                                        print(traceback.format_exc())
+                                        print ("Failed to terminate SMTP properly")
                                 inbox.close()
                                 inbox.logout()
                                 checkForStart = False
-                                process.wait()
+                                #process.wait()
 
                             elif body.lower() == 'st op':
                                 try:
